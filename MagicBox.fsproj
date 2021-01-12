@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="SearchEngine.fs" />
+    <Compile Include="Search\Downloaders.fs" />
+    <Compile Include="Search\Extractors.fs" />
+    <Compile Include="Search\SearchDomain.fs" />
   </ItemGroup>
+
+  <ItemGroup />
 
 </Project>

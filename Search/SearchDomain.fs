@@ -1,13 +1,60 @@
 ﻿module SearchDomain
-open Downloaders
-open Extractors
+open System
+open System.Net
+open System.Net.Http
 
-let google = googleSearchUrl>>webClientDownload>>regexExtractor
+type RotationAlgorithm = 
+    |RoundRobin 
+    |Random 
+    |PriorityQueue
+
+type ScrapingProxies = 
+    {
+      Proxies: WebProxy list 
+      ProxyRotationAlgo: RotationAlgorithm     
+    }
+
+type SearchResult =
+    {
+      LinkText:string
+      LinkUrl:string
+    }
+
+type DataString = 
+    |Html of string
+    |Json of string
+
+type DataToSend =
+    |QueryString of string
+    |PostData of byte array
+    
+type HttpInfo =
+    {
+      BaseUrl:string
+      Cookies:CookieContainer
+      HttpHeaders: WebHeaderCollection
+      Method:HttpMethod
+      Data: DataToSend
+      Proxy:WebProxy option
+     }
+
+type DownloadInfo =
+    |HttpInfo
 
 
-type test()=
- member this.Show() =
-   printfn "In Show"
-   (google "test")   
-   |>Set.iter (fun x-> printfn "%s" x)
-   ()
+type ScrapingInfo =
+    {
+      Downloader:(DownloadInfo->DataString)
+      Extractor:DataString->SearchResult list
+    }
+type SearchEngine =
+    {
+      Name:string
+      Country:string
+      TopLevelDomain:string
+      BaseUrl:string
+      Proxies:ScrapingProxies option
+    }
+    
+
+

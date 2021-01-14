@@ -38,13 +38,20 @@ type HttpInfo =
       Proxy:WebProxy option
      }
 
+type ChromeInfo =
+    {
+      Headless:bool
+      ChromeDir:string
+      ProfileDir:string   
+    }
+
 type DownloadInfo =
-    |HttpInfo
-
-
+    |HttpInfo of HttpInfo
+    |ChromeInfo of ChromeInfo
+    
 type ScrapingInfo =
     {
-      Downloader:(DownloadInfo->DataString)
+      Downloader:DownloadInfo->DataString
       Extractor:DataString->SearchResult list
     }
 type SearchEngine =

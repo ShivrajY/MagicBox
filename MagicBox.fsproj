@@ -5,11 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Search\Search.Common.Types.fs" />
-    <Compile Include="Search\Search.Common.Functions.fs" />
-    <Compile Include="Search\Downloaders.fs" />
-    <Compile Include="Search\Extractors.fs" />
-    <Compile Include="Search\SearchDomain.fs" />
+    <Compile Include="HOF.fs" />
+    <Compile Include="Common.fs" />
+    <Compile Include="SearchEngines\SearchEngine.Types.fs" />
+    <Compile Include="SearchEngines\SearchEngine.Downloader.fs" />
+    <Compile Include="SearchEngines\SearchEngine.Extractor.fs" />
+    <Compile Include="SearchEngines\SearchEngine.Functions.fs" />
+    <Compile Include="ScratchPad.fsx" />  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Data" Version="3.3.3" />
   </ItemGroup>
 
 </Project>

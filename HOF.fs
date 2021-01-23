@@ -1,8 +1,8 @@
-﻿module HOF
+﻿module HOF.Common
 open System
 open System.Collections.Generic
 
-let method func parameters = func parameters
+let applyPartial func parameters = func parameters
 
 let memoise fn =
     let cache = Dictionary<_,_>()

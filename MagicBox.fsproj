@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="HOF.fsi" />
     <Compile Include="HOF.fs" />
+    <Compile Include="Common.fsi" />
     <Compile Include="Common.fs" />
+    <Compile Include="SearchEngines\SearchEngine.Extractor.fs" />
     <Compile Include="SearchEngines\SearchEngine.Types.fs" />
     <Compile Include="SearchEngines\SearchEngine.Downloader.fs" />
-    <Compile Include="SearchEngines\SearchEngine.Extractor.fs" />
     <Compile Include="SearchEngines\SearchEngine.Functions.fs" />
     <Compile Include="ScratchPad.fsx" />  </ItemGroup>
 

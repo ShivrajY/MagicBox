@@ -6,20 +6,20 @@
   
   **Features:** Proxies, Pluggable Downloaders, Extractors
   
-  1.Google - All TLDs/Country 
-  2.Yahoo
-  3.Bing
-  4.Yandex
-  5.Duckduckgo
-  6.Ask
-  7.AOL
-  8.Rediff
-  9.IXQuick
-  10.YouTube
-  11.Similar Site Search
-  12.Biglobe: biglobe.co.jp
-  13.goo: search.goo.ne.jp
-  14.Orange : orange.com
+  1.Google - All TLDs/Country <br /> 
+  2.Yahoo <br /> 
+  3.Bing <br /> 
+  4.Yandex <br /> 
+  5.Duckduckgo <br /> 
+  6.Ask <br /> 
+  7.AOL <br /> 
+  8.Rediff <br /> 
+  9.IXQuick <br /> 
+  10.YouTube <br /> 
+  11.Similar Site Search <br /> 
+  12.Biglobe: biglobe.co.jp <br /> 
+  13.goo: search.goo.ne.jp <br /> 
+  14.Orange : orange.com <br /> 
   
   
   

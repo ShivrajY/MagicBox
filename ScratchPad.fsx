@@ -1,16 +1,18 @@
-﻿#r @"C:\Users\supre\.nuget\packages\fsharp.data\3.3.3\lib\netstandard2.0\FSharp.Data.dll"
+﻿open System.Net
 open System
-open System.IO
-open System.Net
 open FSharp.Data
-open FSharp.Data.HttpRequestHeaders
-#load "Common.fs"
-#load "HOF.fs"
-open Common
-open HOF
+open System.Collections.Generic
 
-let format = "this is test {0}{1}{2}"
+#r @"C:\Users\supre\.nuget\packages\fsharp.data\3.3.3\lib\netstandard2.0\FSharp.Data.dll"
 
-let arr = [|1;2;3;4|] |> castToObjArray
+let req = WebRequest.Create "https://www.google.com/" :?> HttpWebRequest
 
-let str = getFormattedString format arr
+req.Accept<-"*/*"
+req.CookieContainer<-new CookieContainer()
+req.Headers<-WebHeaderCollection()
+req.Headers.Add("accept-encoding: gzip, deflate, br")
+
+req.Timeout<-TimeSpan.FromSeconds(10.).TotalMilliseconds |> int
+req.Method<-"GET"
+
+let resp = req.GetResponse();

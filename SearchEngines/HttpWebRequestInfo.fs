@@ -3,7 +3,7 @@ open System.Net
 open System
 
 type HttpMethod =
-    |Get of url:string * queryString:string
+    |Get of Baseurl:string * queryString:string
     |Post of url:string * postData:byte array
 
 type HttpWebRequestInfo =
@@ -14,5 +14,7 @@ type HttpWebRequestInfo =
       CookieContainer: CookieContainer option
       TimeoutMilliSec:int option
       UserAgent:string
-      Proxy:WebProxy
+      Proxy:WebProxy option
     }
+
+    

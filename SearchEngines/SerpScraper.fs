@@ -12,7 +12,7 @@ type SearchResult = Dictionary<string*Type,obj>
 type Downloader =
     |HttpWebRequest of HttpWebRequestInfo
     |FSharpData
-    |Chrome
+    |Selenium
     |HtmlAgilityPack
 
 type SearchCriteria =
@@ -25,7 +25,7 @@ type WebData =
     |JSON of JsonDocument
     |HtmlDoc of FSharp.Data.HtmlDocument
     |Binary of byte array
-    |ChromeDriver 
+    |Webdriver 
     
 type Extracts = Extract of WebData * SearchCriteria
 

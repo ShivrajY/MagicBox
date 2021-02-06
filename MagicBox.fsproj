@@ -5,10 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="SearchEngine\HttpWebRequestInfo.fs" />
-    <Compile Include="SearchEngine\SerpScraper.fs" />
-    <Compile Include="SearchEngine\SearchEngine.fs" />
+    <Compile Include="SearchEngines\HttpWebRequestInfo.fs" />
+    <Compile Include="SearchEngines\HttpHelper.fs" />
+    <Compile Include="SearchEngines\SerpScraper.fs" />
+    <Compile Include="SearchEngines\SearchEngine.fs" />
+    <Compile Include="SearchEngines\Google.fs" />
     <Compile Include="ScratchPad.fsx" />  </ItemGroup>
+
+  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="FSharp.Data" Version="3.3.3" />

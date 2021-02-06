@@ -1,15 +1,13 @@
-﻿open System.Net
+﻿module Google
+open SearchEngine
+open SerpScraper
+open HttpWebRequestInfo
 open System
 open FSharp.Data
-open System.IO
-open System.Collections.Generic
 
-#r @"C:\Users\supre\.nuget\packages\fsharp.data\3.3.3\lib\netstandard2.0\FSharp.Data.dll"
-
-let google (urlStringFormat:string) (keyword:string) =
-    let escaped = System.Net.WebUtility.UrlEncode(keyword)
-    let url = String.Format(urlStringFormat,escaped)
-    let results = HtmlDocument.Load(url)
+let google (keyword:string) =
+    let url = String.Format("http://www.google.com/search?q={0}",Uri.EscapeUriString(keyword))
+    let results = FSharp.Data.HtmlDocument.Load(url)
     let links = 
         results.Descendants ["a"]
         |> Seq.choose (fun x -> 
@@ -23,5 +21,3 @@ let google (urlStringFormat:string) (keyword:string) =
         |> Seq.map (fun (name, url) -> name, url.Substring(0, url.IndexOf("&sa=")).Replace("/url?q=", ""))
         |> Seq.toArray
     searchResults
-
-google "" ""

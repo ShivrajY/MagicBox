@@ -5,9 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Common\Network.fs" />
+    <Compile Include="Common\Common.Types.fs" />
+    <Compile Include="Common\Common.Network.fs" />
     <Compile Include="SearchEngines\SearchEngines.Common.fs" />
-    <Compile Include="SearchEngines\Google.fs" />
+    <Compile Include="SearchEngines\SearchEngines.Google.fs" />
     <Compile Include="ScratchPad.fsx" />  </ItemGroup>
 
   <ItemGroup>

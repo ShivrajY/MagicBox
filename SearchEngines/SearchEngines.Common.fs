@@ -1,7 +1,20 @@
-﻿module SearchEngines.Common
+﻿module internal SearchEngines.Common
 open Common.Network
+open System.Net
+open FSharp.Data
 
-type SearchEngine =
+type ScrapeMethod = 
+    |HttpRequest of proxy:WebProxy option * cookies: CookieContainer option
+    |Selenium 
+
+type SearchData =
+    {
+      Query:string
+      ScrapeMethod:ScrapeMethod option
+      Pages:int option
+    }
+
+type SearchEngines =
     |Google
     |Yahoo
     |Bing
@@ -16,15 +29,5 @@ type SearchEngine =
     |Biglobe
     |Goo
     |Orange
+   
 
-type ScrapeMethod = 
-    |HttpRequest
-    |Webbrowser
-    |Selenium
-
-type SearchData =
-    {
-      Query:string
-      ScrapeMethod:ScrapeMethod option
-      Pages:int option
-    }

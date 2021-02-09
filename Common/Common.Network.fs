@@ -1,9 +1,13 @@
-﻿module Common.Network
+﻿module internal Common.Network
 open System
 open System.Net
 open FSharp.Data
 
-let getProxyFromString (proxyString:string) (seperator:char) =
+type HttpMethod =
+    |Get of string
+    |Post of string * HttpRequestBody
+
+let parseProxyString (proxyString:string) (seperator:char) =
     let arr = proxyString.Split([|seperator|], StringSplitOptions.RemoveEmptyEntries)
     match arr with
     |[|host; port|]->
@@ -17,5 +21,4 @@ let getProxyFromString (proxyString:string) (seperator:char) =
                        Some prox
             |(false,_)->None   
     |_->None  
-
 

@@ -5,12 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="SERP Scrapers\SearchParams.fs" />
+    <Compile Include="Common\Network.fs" />
+    <Compile Include="SearchEngines\SearchEngines.Common.fs" />
+    <Compile Include="SearchEngines\Google.fs" />
     <Compile Include="ScratchPad.fsx" />  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FSharp.Data" Version="3.3.3" />

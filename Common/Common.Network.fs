@@ -1,4 +1,4 @@
-﻿module internal Common.Network
+﻿module Common.Network
 open System
 open System.Net
 open FSharp.Data
@@ -6,6 +6,7 @@ open FSharp.Data
 type HttpMethod =
     |Get of string
     |Post of string * HttpRequestBody
+
 
 let parseProxyString (proxyString:string) (seperator:char) =
     let arr = proxyString.Split([|seperator|], StringSplitOptions.RemoveEmptyEntries)

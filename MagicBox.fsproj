@@ -5,4 +5,7 @@
   <ItemGroup>
     <PackageReference Include="FSharp.Data" Version="4.2.8" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src/searchengines/Google.fs" />
+  </ItemGroup>
 </Project>

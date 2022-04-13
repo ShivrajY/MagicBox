@@ -7,6 +7,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src/searchengines/Google.fs" />
+    <Compile Include="src\searchengines\Yahoo.fs" />
+    <Compile Include="src\searchengines\Bing.fs" />
+    <Compile Include="src\searchengines\Aol.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="6.0.3" />

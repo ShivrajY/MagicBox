@@ -1,23 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <Compile Include="Common\Common.Types.fs" />
-    <Compile Include="Common\Common.Network.fs" />
-    <Compile Include="Search\Search.Common.fs" />
-    <Compile Include="ScratchPad.fsx" />
-    <Compile Include="ThingsToConsider.fsx" />  
+    <PackageReference Include="FSharp.Data" Version="4.2.8" />
   </ItemGroup>
-
-  <ItemGroup />
-
-  <ItemGroup>
-    <PackageReference Include="FSharp.Data" Version="3.3.3" />
-    <PackageReference Include="FsPickler" Version="5.3.2" />
-    <PackageReference Include="FsPickler.Json" Version="5.3.2" />
-  </ItemGroup>
-
 </Project>

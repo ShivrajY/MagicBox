@@ -339,3 +339,9 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 .ionide
+
+# MagicBox local state and encrypted secrets
+.magicbox/
+*.secrets.enc
+adapters/local/
+adapters/private/

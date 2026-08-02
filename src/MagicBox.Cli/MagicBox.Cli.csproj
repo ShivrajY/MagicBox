@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MagicBox.Cli</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>magicbox</ToolCommandName>
+    <PackageId>MagicBox.Cli</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>ShivrajY</Authors>
+    <Description>Command-line tool for the MagicBox universal scraper.</Description>
+    <PackageTags>scraping;cli;yaml;search</PackageTags>
+    <RepositoryUrl>https://github.com/ShivrajY/MagicBox</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <NoWarn>$(NoWarn);NU5111</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../MagicBox.Core/MagicBox.Core.csproj" />
+    <ProjectReference Include="../MagicBox.Browser/MagicBox.Browser.csproj" />
+    <PackageReference Include="System.CommandLine" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)..\..\adapters\builtin\**\*.yaml" Link="adapters\builtin\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="adapters\builtin\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Include="$(MSBuildThisFileDirectory)..\..\schemas\adapter-v1.schema.json" Link="schemas\adapter-v1.schema.json" CopyToOutputDirectory="PreserveNewest" Pack="true" PackagePath="schemas\adapter-v1.schema.json" />
+    <None Include="../../README.md" Pack="true" PackagePath="README.md" Link="README.md" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,44 @@
+schemaVersion: 1
+id: brave
+kind: search
+inputs:
+  query:
+    required: true
+    type: string
+request:
+  method: GET
+  url: https://search.brave.com/search
+  query:
+    q: ${input.query}
+    source: web
+  headers:
+    User-Agent: MagicBox/1.0
+  timeoutMs: 30000
+render:
+  mode: http
+  fallbackOn: []
+response:
+  type: html
+extract:
+  items:
+    css: .result-wrapper .result-content > a
+  fields:
+    title:
+      source: text
+      selector: div.title
+      transforms:
+        - kind: trim
+        - kind: htmldecode
+    url:
+      source: attribute
+      attribute: href
+      transforms:
+        - kind: urlresolve
+          argument: source
+        - kind: requireAbsoluteUri
+pagination:
+  strategy: none
+  maxPages: 1
+policy:
+  requiredFields: [title, url]
+  robots: report

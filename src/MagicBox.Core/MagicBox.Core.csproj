@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>MagicBox.Core</RootNamespace>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackageId>MagicBox.Core</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>ShivrajY</Authors>
+    <Description>Configuration-driven asynchronous HTML and JSON scraping engine for .NET.</Description>
+    <PackageTags>scraping;html;json;yaml;automation</PackageTags>
+    <RepositoryUrl>https://github.com/ShivrajY/MagicBox</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" />
+    <PackageReference Include="JsonPath.Net" />
+    <PackageReference Include="JsonSchema.Net" />
+    <PackageReference Include="YamlDotNet" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="README.md" Link="README.md" />
+  </ItemGroup>
+</Project>

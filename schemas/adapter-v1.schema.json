@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "kind", "request", "render", "response", "extract", "pagination", "policy"],
+  "properties": {
+    "schemaVersion": { "type": "integer", "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,63}$" },
+    "kind": { "type": "string", "enum": ["search", "website"] },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "required": { "type": "boolean" },
+          "type": { "type": "string", "enum": ["string", "integer", "decimal", "boolean"] },
+          "default": { "type": "string" }
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "url"],
+      "properties": {
+        "method": { "type": "string", "enum": ["GET", "POST"] },
+        "url": { "type": "string", "minLength": 1 },
+        "query": { "type": "object", "additionalProperties": { "type": "string" } },
+        "headers": { "type": "object", "additionalProperties": { "type": "string" } },
+        "timeoutMs": { "type": "integer", "minimum": 100, "maximum": 300000 },
+        "maxBodyBytes": { "type": "integer", "minimum": 1024, "maximum": 52428800 }
+      }
+    },
+    "render": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["http", "browser", "auto"] },
+        "fallbackOn": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": { "type": { "type": "string", "enum": ["html", "json"] } }
+    },
+    "extract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items", "fields"],
+      "properties": {
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "css": { "type": "string" },
+            "jsonPath": { "type": "string" }
+          },
+          "oneOf": [
+            { "required": ["css"] },
+            { "required": ["jsonPath"] }
+          ]
+        },
+        "fields": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source"],
+            "properties": {
+              "source": { "type": "string", "enum": ["text", "attribute", "innerHtml", "outerHtml", "json", "constant", "input", "currentUrl", "sourceUrl"] },
+              "selector": { "type": "string" },
+              "attribute": { "type": "string" },
+              "jsonPath": { "type": "string" },
+              "value": { "type": "string" },
+              "input": { "type": "string" },
+              "transforms": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["kind"],
+                  "properties": {
+                    "kind": { "type": "string" },
+                    "argument": { "type": "string" },
+                    "pattern": { "type": "string" },
+                    "replacement": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "pagination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strategy"],
+      "properties": {
+        "strategy": { "type": "string", "enum": ["none", "pageParameter", "offsetParameter", "nextLink", "jsonCursor", "clickMore"] },
+        "selector": { "type": "string" },
+        "parameter": { "type": "string" },
+        "start": { "type": "integer", "minimum": 0 },
+        "step": { "type": "integer", "minimum": 1 },
+        "maxPages": { "type": "integer", "minimum": 1, "maximum": 10000 },
+        "cursorPath": { "type": "string" }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredFields"],
+      "properties": {
+        "requiredFields": { "type": "array", "items": { "type": "string" } },
+        "robots": { "type": "string", "enum": ["report"] }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "loginUrl": { "type": "string" },
+        "successSelector": { "type": "string" },
+        "sessionName": { "type": "string" },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["kind"],
+            "properties": {
+              "kind": { "type": "string" },
+              "selector": { "type": "string" },
+              "value": { "type": "string" },
+              "secretName": { "type": "string" },
+              "timeoutMs": { "type": "integer", "minimum": 100, "maximum": 600000 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

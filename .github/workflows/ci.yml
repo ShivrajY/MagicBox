@@ -1,0 +1,40 @@
+name: MagicBox CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore --locked-mode
+      - run: dotnet build MagicBox.sln --no-restore --configuration Release
+      - run: dotnet test MagicBox.sln --no-build --configuration Release
+
+  browser:
+    name: Browser smoke (Chromium)
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet restore --locked-mode
+      - run: dotnet build src/MagicBox.Cli/MagicBox.Cli.csproj --no-restore --configuration Release
+      - shell: pwsh
+        run: ./src/MagicBox.Cli/bin/Release/net10.0/playwright.ps1 install --with-deps chromium
+      - run: dotnet run --project src/MagicBox.Cli --no-build --configuration Release -- doctor --browser

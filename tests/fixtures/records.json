@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "title": " First JSON result ", "url": "https://example.test/json-one", "rank": 1 },
+    { "title": "Second JSON result", "url": "https://example.test/json-two", "rank": 2 }
+  ],
+  "next": "cursor-2"
+}

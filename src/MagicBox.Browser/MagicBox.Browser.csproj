@@ -5,6 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>MagicBox.Browser</RootNamespace>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ShivrajY/MagicBox</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/ShivrajY/MagicBox</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../MagicBox.Core/MagicBox.Core.csproj" />

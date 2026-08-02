@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <RestoreLockedMode>false</RestoreLockedMode>
+    <RestoreLockedMode>true</RestoreLockedMode>
   </PropertyGroup>
 </Project>

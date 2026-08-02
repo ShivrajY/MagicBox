@@ -1,0 +1,44 @@
+name: Bug report
+description: Report a reproducible problem in MagicBox
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please remove credentials, cookies, private data, and sensitive target-site content before posting.
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: 0.1.0 or 775836c
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform and .NET SDK
+      placeholder: macOS 15, .NET SDK 10.0.302
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Include the smallest adapter or fixture-free command that reproduces the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and logs
+      description: Redact secrets, cookies, authorization headers, and private URLs.
+    validations:
+      required: true

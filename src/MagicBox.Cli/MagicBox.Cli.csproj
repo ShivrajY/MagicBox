@@ -13,6 +13,9 @@
     <Authors>ShivrajY</Authors>
     <Description>Command-line tool for the MagicBox universal scraper.</Description>
     <PackageTags>scraping;cli;yaml;search</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ShivrajY/MagicBox</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/ShivrajY/MagicBox</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <NoWarn>$(NoWarn);NU5111</NoWarn>

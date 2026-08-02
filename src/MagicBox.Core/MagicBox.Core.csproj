@@ -10,6 +10,9 @@
     <Authors>ShivrajY</Authors>
     <Description>Configuration-driven asynchronous HTML and JSON scraping engine for .NET.</Description>
     <PackageTags>scraping;html;json;yaml;automation</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/ShivrajY/MagicBox</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/ShivrajY/MagicBox</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

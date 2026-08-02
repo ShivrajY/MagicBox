@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
 
+concurrency:
+  group: magicbox-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -23,6 +27,8 @@ jobs:
       - run: dotnet restore --locked-mode
       - run: dotnet build MagicBox.sln --no-restore --configuration Release
       - run: dotnet test MagicBox.sln --no-build --configuration Release
+      - run: dotnet pack src/MagicBox.Core/MagicBox.Core.csproj --no-build --configuration Release --output ./artifacts
+      - run: dotnet pack src/MagicBox.Cli/MagicBox.Cli.csproj --no-build --configuration Release --output ./artifacts
 
   browser:
     name: Browser smoke (Chromium)

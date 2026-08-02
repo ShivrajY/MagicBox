@@ -5,27 +5,10 @@ open FSharp.Data
 
 module Google =
 
-    let private tryQueryParameter (parameterName: string) (query: string) =
-        query.Split([| '&' |], StringSplitOptions.RemoveEmptyEntries)
-        |> Array.tryPick (fun parameter ->
-            let separatorIndex = parameter.IndexOf('=')
-
-            if separatorIndex <= 0 then
-                None
-            elif parameter.Substring(0, separatorIndex) <> parameterName then
-                None
-            else
-                let value = parameter.Substring(separatorIndex + 1).Replace("+", " ")
-
-                try
-                    Some(Uri.UnescapeDataString(value))
-                with :? UriFormatException ->
-                    None)
-
     let private tryResultUrl (href: string) =
         if href.StartsWith("/url?", StringComparison.Ordinal) then
             href.Substring("/url?".Length)
-            |> tryQueryParameter "q"
+            |> Url.tryQueryParameter "q"
         else
             None
 

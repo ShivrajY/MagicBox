@@ -1,26 +1,21 @@
 # MagicBox
 
-## Features: 
+## Features
 
-### **1) Scrape Seach engines (Raw html, Search Api Scraping)**
-  
-  **Features:** Proxies, Pluggable Downloaders, Extractors
-  
-  1.Google - All TLDs/Country <br /> 
-  2.Yahoo <br /> 
-  3.Bing <br /> 
-  4.Yandex <br /> 
-  5.Duckduckgo <br /> 
-  6.Ask <br /> 
-  7.AOL <br /> 
-  8.Rediff <br /> 
-  9.IXQuick <br /> 
-  10.YouTube <br /> 
-  11.Similar Site Search <br /> 
-  12.Biglobe: biglobe.co.jp <br /> 
-  13.goo: search.goo.ne.jp <br /> 
-  14.Orange : orange.com <br /> 
-  
-  
-  
-  
+### Scrape search engines
+
+Each search module exposes a `Search` function that returns a sequence of
+`(title, url)` pairs from an HTML results page.
+
+Currently implemented:
+
+1. Google
+2. Yahoo
+3. Bing
+4. AOL
+5. DuckDuckGo
+6. Brave Search
+
+The original project roadmap also mentioned Yandex, Ask, Rediff, IXQuick,
+YouTube, Similar Site Search, Biglobe, goo, and Orange; those engines are not
+included in the current project file yet.
